@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 
-interface Category {
+export interface Category {
   id: string;
   name: string;
   description: null | string;
@@ -33,9 +33,23 @@ const categoriesSlice = createSlice({
   name: "categories",
   initialState: initialState,
   reducers: {
-    createCategory(state, action) {},
-    updateCategory(state, action) {},
-    deleteCategory(state, action) {},
+    createCategory(state, action) {
+      state.push(action.payload);
+    },
+    updateCategory(state, action) {
+      //find index on state of category to update
+      const index = state.findIndex((category)=> category.id === action.payload.id);
+      
+      //update category on state
+      state[index] = action.payload;
+    },
+    deleteCategory(state, action) {
+      //find index on state of category to update
+      const index = state.findIndex((category) => category.id === action.payload.id);
+
+      //update category on state
+      state.splice(index, 1);
+    },
   },
 });
 
@@ -55,3 +69,4 @@ export const selectCategoryById = (state: RootState, id: string) => {
 };
 
 export default categoriesSlice.reducer;
+export const { createCategory, updateCategory, deleteCategory } = categoriesSlice.actions;
