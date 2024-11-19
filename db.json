@@ -1,0 +1,284 @@
+{
+  "categories": {
+    "data": [
+      {
+        "id": "001",
+        "name": "Abacate",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "002",
+        "name": "Beringela",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "003",
+        "name": "Caramelo",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "004",
+        "name": "Donatelo",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "005",
+        "name": "Estrla",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "006",
+        "name": "Fabula",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "007",
+        "name": "Gargantua",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "008",
+        "name": "Heracto",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "009",
+        "name": "Imola",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "010",
+        "name": "Jasmine",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "011",
+        "name": "Lirico",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "012",
+        "name": "Monaco",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "013",
+        "name": "Natacao",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "014",
+        "name": "Operacao",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      },
+      {
+        "id": "015",
+        "name": "Queijo",
+        "description": "Era uma vez",
+        "is_active": true,
+        "created_at": "2024-08-15T10:59:09+0000",
+        "updated_at": "2024-08-15T10:59:09+0000",
+        "deleted_at": null
+      }
+    ],
+    "links": {
+      "first": "http://localhost:3333/api/categories?page=1",
+      "last": "http://localhost:3333/api/categories?page=7",
+      "prev": null,
+      "next": "http://localhost:3333/api/categories?page=2"
+    },
+    "meta": {
+      "current_page": 1,
+      "from": 1,
+      "last_page": 7,
+      "path": "http://localhost:3333/api/categories",
+      "per_page": 15,
+      "to": 15,
+      "total": 100
+    }
+  },
+  "categories2": [
+    {
+      "id": "002",
+      "name": "Beringela",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "003",
+      "name": "Caramelo",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "004",
+      "name": "Donatelo",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "005",
+      "name": "Estrla",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "006",
+      "name": "Fabula",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "007",
+      "name": "Gargantua",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "008",
+      "name": "Heracto",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "009",
+      "name": "Imola",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "010",
+      "name": "Jasmine",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "011",
+      "name": "Lirico",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "012",
+      "name": "Monaco",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "013",
+      "name": "Natacao",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "014",
+      "name": "Operacao",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    },
+    {
+      "id": "015",
+      "name": "Queijo",
+      "description": "Era uma vez",
+      "is_active": true,
+      "created_at": "2024-08-15T10:59:09+0000",
+      "updated_at": "2024-08-15T10:59:09+0000",
+      "deleted_at": null
+    }
+  ]
+}

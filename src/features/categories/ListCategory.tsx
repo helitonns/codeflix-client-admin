@@ -1,20 +1,20 @@
-import { Box, Button, IconButton, Typography } from "@mui/material";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { deleteCategory, selectCategories } from "./categorySlice";
-import { Link } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
-import {
-  DataGrid,
-  GridColDef,
-  GridRenderCellParams,
-  GridRowsProp,
-  GridToolbar,
-} from "@mui/x-data-grid";
+import { Box, Button, IconButton, Typography } from "@mui/material";
+import { DataGrid,GridColDef,GridRenderCellParams,GridRowsProp,GridToolbar,} from "@mui/x-data-grid";
+import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { deleteCategory, selectCategories, useDeleteCategoryMutation, useGetCategoriesQuery } from "./categorySlice";
+import { useSnackbar } from "notistack";
+import { useEffect } from "react";
 
 export default function ListCategory() {
-  const categories = useAppSelector(selectCategories);
+  const { data, isFetching, error } = useGetCategoriesQuery();
+  const [deleteCategory, deleteCategoryStatus] = useDeleteCategoryMutation();
+  
   const dispatch = useAppDispatch();
+  const { enqueueSnackbar } = useSnackbar();
 
+  //____________________________________________________________________________
   const componentProps = {
     toolbar: {
       showQuickFilter: true,
@@ -22,23 +22,36 @@ export default function ListCategory() {
     },
   };
 
-  const rows: GridRowsProp = categories.map((category) => ({
+  const rows: GridRowsProp = data ? data.data.map((category) => ({
     id: category.id,
     name: category.name,
     description: category.description,
     isActive: category.is_active,
     createdAt: new Date(category.created_at).toLocaleDateString("pt-BR"),
     actions: category.id,
-  }));
+  })) : [];
 
   const columns: GridColDef[] = [
     { field: "id", headerName: "ID", flex: 1 },
     { field: "name", headerName: "Name", flex: 1, renderCell: renderNameCell },
-    { field: "isActive", headerName: "Active", flex: 1, type: "boolean", renderCell: renderIsActiveCell, },
+    {
+      field: "isActive",
+      headerName: "Active",
+      flex: 1,
+      type: "boolean",
+      renderCell: renderIsActiveCell,
+    },
     { field: "createdAt", headerName: "Created At", flex: 1 },
-    { field: "actions", headerName: "Actions", type: "string", flex: 1, renderCell: renderActionsCell,},
+    {
+      field: "actions",
+      headerName: "Actions",
+      type: "string",
+      flex: 1,
+      renderCell: renderActionsCell,
+    },
   ];
 
+  //____________________________________________________________________________
   function renderIsActiveCell(row: GridRenderCellParams) {
     return (
       <Typography color={row.value ? "primary" : "secondary"}>
@@ -47,9 +60,20 @@ export default function ListCategory() {
     );
   }
 
-  function handleDeleteCategory(id: string){
-    dispatch(deleteCategory(id));
+  async function handleDeleteCategory(id: string) {
+    console.log(id);
+    await deleteCategory({ id });    
   }
+
+  useEffect(() => {
+    if (deleteCategoryStatus.isSuccess) {
+      enqueueSnackbar("Category deleted", { variant: "success"});
+    }
+    
+    if (deleteCategoryStatus.isError) {
+      enqueueSnackbar("Category not deleted", { variant: "error"});
+    }
+  }, [deleteCategoryStatus, enqueueSnackbar]);
 
   function renderActionsCell(row: GridRenderCellParams) {
     return (
@@ -73,6 +97,7 @@ export default function ListCategory() {
       </Link>
     );
   }
+  //____________________________________________________________________________
 
   return (
     <Box maxWidth="lg" sx={{ mt: 4, mb: 4 }}>
