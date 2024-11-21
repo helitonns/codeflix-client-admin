@@ -1,12 +1,12 @@
 import { Box, Paper, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
-import { useState } from "react";
-import { useAppDispatch } from "../../app/hooks";
-import { Category, createCategory } from "./categorySlice";
+import { useEffect, useState } from "react";
+import { Category, useCreateCategoryMutation } from "./categorySlice";
 import { CategoryForm } from "./components/CategoryForm";
 
 export default function CreateCategory() {
-  const [isDisabled, setIsDisabled] = useState(false);
+  const { enqueueSnackbar } = useSnackbar();
+  const [createCategory, status] = useCreateCategoryMutation();
   const [categoryState, setCategoryState] = useState<Category>({
     id: "",
     name: "",
@@ -16,8 +16,6 @@ export default function CreateCategory() {
     created_at: "",
     updated_at: "",
   });
-  const dispatch = useAppDispatch();
-  const { enqueueSnackbar } = useSnackbar();
   
   //____________________________________________________________________________
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,9 +30,18 @@ export default function CreateCategory() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    dispatch(createCategory(categoryState));
-    enqueueSnackbar("Category created successfully!", { variant: "success" });
+    await createCategory(categoryState);
   }
+
+  useEffect(()=> {
+    if (status.isSuccess) {
+      enqueueSnackbar("Category created successfully!", { variant: "success" });
+    }
+
+    if (status.error) {
+      enqueueSnackbar("Category not created", { variant: "error" });
+    }
+  }, [ enqueueSnackbar, status.error, status.isSuccess]);
   //____________________________________________________________________________
 
   return (
@@ -49,8 +56,7 @@ export default function CreateCategory() {
         <Box p={2}>
           <CategoryForm
             category={categoryState}
-            isDisabled={isDisabled}
-            isLoading={false}
+            isDisabled={status.isLoading}
             handleSubmit={handleSubmit}
             handleChange={handleChange}
             handleToggle={handleToggle}

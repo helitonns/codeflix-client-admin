@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useSnackbar } from "notistack";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -7,28 +7,37 @@ import { CategoryTable } from './components/CategoryTable';
 import { GridFilterModel } from "@mui/x-data-grid";
 
 export default function ListCategory() {
-  const [ perPage ] = useState(10);
-  const [ rowsPerPage ] = useState([10, 25, 50, 100]);
-  const [search, setSearch] = useState("");
-  const { data, isFetching, error } = useGetCategoriesQuery();
+
+  const [options, setOptions] = useState({
+    page: 1,
+    search: "",
+    perPage: 10,
+    rowsPerPage: [10, 20, 30],
+  });
+
+  const { data, isFetching, error } = useGetCategoriesQuery(options);
   const [deleteCategory, deleteCategoryStatus] = useDeleteCategoryMutation();
   const { enqueueSnackbar } = useSnackbar();
 
   //____________________________________________________________________________
   function handleOnPageChange(page: number){
-    console.log(page);
+    setOptions({ ...options, page: page + 1 });
   }
   
-  function handleOnPageSizeChange(page: number){
-    console.log(page);
+  function handleOnPageSizeChange(perPage: number) {
+    setOptions({ ...options, perPage });
   }
   
   function handleFilterChange(filterModel: GridFilterModel) {
-    console.log("teste");
+    if (!filterModel.quickFilterValues?.length) {
+      return setOptions({ ...options, search: "" });
+    }
+
+    const search = filterModel.quickFilterValues.join("");
+    setOptions({ ...options, search });
   }
 
   async function handleDeleteCategory(id: string) {
-    console.log(id);
     await deleteCategory({ id });    
   }
 
@@ -42,6 +51,9 @@ export default function ListCategory() {
     }
   }, [deleteCategoryStatus, enqueueSnackbar]);
   
+  if(error){
+    return <Typography>Error fetching categories</Typography>
+  }
   //____________________________________________________________________________
 
   return (
@@ -61,8 +73,8 @@ export default function ListCategory() {
       <CategoryTable
         data={data}
         isFetching={isFetching}
-        perPage={perPage}
-        rowsPerPage={rowsPerPage}
+        perPage={options.perPage}
+        rowsPerPage={options.rowsPerPage}
         handleDelete={handleDeleteCategory}
         handleOnPageChange={handleOnPageChange}
         handleOnPageSizeChange={handleOnPageSizeChange}
