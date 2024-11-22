@@ -5,7 +5,7 @@ import {
   GridRenderCellParams,
   GridToolbar,
 } from "@mui/x-data-grid";
-import { Results } from "../../../types/Category";
+import { Results } from "../../../types/CastMembers";
 import { Link } from "react-router-dom";
 import { Box, IconButton, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -22,7 +22,7 @@ type Props = {
   handleDelete: (id: string) => void;
 }
 
-export function CategoryTable({
+export function CastMembersTable({
   data,
   perPage,
   isFetching,
@@ -40,43 +40,28 @@ export function CategoryTable({
     },
   };
 
-  
-
-  const columns: GridColDef[] = [
-    { field: "id", headerName: "ID", flex: 1 },
+  const columns: GridColDef[] = [    
+    // { field: "id", headerName: "ID", flex: 1},
     { field: "name", headerName: "Name", flex: 1, renderCell: renderNameCell },
-    {
-      field: "isActive",
-      headerName: "Active",
-      flex: 1,
-      type: "boolean",
-      renderCell: renderIsActiveCell,
-    },
-    { field: "createdAt", headerName: "Created At", flex: 1 },
-    {
-      field: "actions",
-      headerName: "Actions",
-      type: "string",
-      flex: 1,
-      renderCell: renderActionsCell,
-    },
+    { field: "type", headerName: "Type", flex: 1, renderCell: renderTypeCell},
+    { field: "id", headerName: "Actions", flex: 1,  renderCell: renderActionsCell,},
   ];
 
   function renderNameCell(row: GridRenderCellParams) {
     return (
       <Link
         style={{ textDecoration: "none" }}
-        to={`/categories/edit/${row.id}`}
+        to={`/cast_members/edit/${row.id}`}
       >
         <Typography color="primary">{row.value}</Typography>
       </Link>
     );
   }
 
-  function renderIsActiveCell(row: GridRenderCellParams) {
+  function renderTypeCell(row: GridRenderCellParams) {
     return (
-      <Typography color={row.value ? "primary" : "secondary"}>
-        {row.value ? "Active" : "Inactive"}
+      <Typography color="primary">
+        {row.value === 1 ? "Diretor" : "Ator"}
       </Typography>
     );
   }
@@ -94,12 +79,11 @@ export function CategoryTable({
   }
 
   function mapDataToGridRows(data: Results){
-    const { data: categories } = data;
-    return categories.map((category) => ({
-      id: category.id,
-      name: category.name,
-      isActive: category.is_active,
-      created_at: new Date(category.created_at).toLocaleDateString("pt-BR"),
+    const { data: castMembers } = data;
+    return castMembers.map((castMember) => ({
+      id: castMember.id,
+      name: castMember.name,
+      type: castMember.type,
     }));
   }
 
